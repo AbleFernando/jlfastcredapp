@@ -23,10 +23,10 @@ jobs:
           channel: 'stable'
 
       # Verificar as versões do Flutter e Dart
-      - name: Check Flutter and Dart versions
-        run: |
-          flutter --version
-          dart --version
+      # - name: Check Flutter and Dart versions
+      #   run: |
+      #     flutter --version
+      #     dart --version
 
       # Ajuste de permissões no diretório iOS
       - name: Set folder permissions
