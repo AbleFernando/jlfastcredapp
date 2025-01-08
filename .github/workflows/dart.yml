@@ -44,9 +44,15 @@ jobs:
         run: pod repo update
         working-directory: ios
 
-      # Configuração de permissões para o diretório Flutter.framework
-      - name: Set permissions for Flutter.framework
-        run: sudo chmod -R 777 /Users/runner/work/jlfastcredapp/jlfastcredapp/build/ios/Release-iphoneos/Flutter.framework
+      # Verificar se o diretório existe antes de tentar aplicar permissões
+      - name: Check if Flutter.framework exists
+        run: |
+          if [ -d "build/ios/Release-iphoneos/Flutter.framework" ]; then
+            echo "Flutter.framework exists, setting permissions..."
+            sudo chmod -R 777 build/ios/Release-iphoneos/Flutter.framework
+          else
+            echo "Flutter.framework does not exist, skipping chmod."
+          fi
 
       # Build para iOS no modo release
       - name: Build iOS Release
