@@ -8,37 +8,61 @@ jobs:
     name: 🎉 iOS Build
     runs-on: macos-latest
     steps:
+      # Checkout do repositório
       - uses: actions/checkout@v3
 
       # Clone o repositório do pacote jlfastcred_core
       - name: Clone jlfastcred_core
         run: git clone https://github.com/AbleFernando/jlfastcred_core.git ./jlfastcred_core
-      
+
+      # Configuração do Flutter
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: 'stable'
           architecture: x64
 
+      # Ajuste de permissões no diretório iOS
       - name: Set folder permissions
         run: chmod -R 777 ios
-      
+
+      # Instalar dependências do Flutter
       - run: flutter pub get
-      
-      - run: pod repo update
+
+      # Limpar build anterior para evitar conflitos
+      - name: Clean previous builds
+        run: flutter clean
+
+      # Atualizar CocoaPods
+      - name: Update CocoaPods repository
+        run: pod repo update
         working-directory: ios
 
-      - run: flutter build ios --release --no-codesign
+      # Build para iOS no modo release
+      - name: Build iOS Release
+        run: flutter build ios --release --no-codesign
 
-      - run: mkdir Payload
+      # Criar a pasta Payload para o IPA
+      - name: Create Payload directory
+        run: mkdir -p Payload
         working-directory: build/ios/iphoneos
 
-      - run: mv Runner.app/ Payload
+      # Mover Runner.app para Payload
+      - name: Move Runner.app to Payload
+        run: mv Runner.app Payload/
         working-directory: build/ios/iphoneos
 
-      - name: Zip output
+      # Ajustar permissões da Payload
+      - name: Set Payload folder permissions
+        run: chmod -R 777 Payload
+        working-directory: build/ios/iphoneos
+
+      # Empacotar a pasta Payload em um arquivo IPA
+      - name: Create IPA archive
         run: zip -qq -r -9 FlutterIpaExport.ipa Payload
         working-directory: build/ios/iphoneos
 
+      # Fazer upload do IPA para a release
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
@@ -46,4 +70,4 @@ jobs:
           file: build/ios/iphoneos/FlutterIpaExport.ipa
           tag: v1.0
           overwrite: true
-          body: "This is first release"
+          body: "This is the first release"
