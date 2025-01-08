@@ -63,14 +63,14 @@ jobs:
         run: mkdir -p Payload
         working-directory: build/ios/iphoneos
 
-      # Mover Runner.app para Payload
-      - name: Move Runner.app to Payload
-        run: mv Runner.app Payload/
-        working-directory: build/ios/iphoneos
-
       # Ajustar permissões da Payload
       - name: Set Payload folder permissions
         run: chmod -R 777 Payload
+        working-directory: build/ios/iphoneos
+
+      # Mover Runner.app para Payload
+      - name: Move Runner.app to Payload
+        run: mv Runner.app Payload/
         working-directory: build/ios/iphoneos
 
       # Empacotar a pasta Payload em um arquivo IPA
