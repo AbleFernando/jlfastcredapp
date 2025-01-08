@@ -21,13 +21,12 @@ jobs:
       #     channel: 'stable'
       #     architecture: x64
 
-       # Configuração do Flutter para uma versão específica
-      # Configuração do Flutter para uma versão específica
+      # Configuração do Flutter (usando a ação oficial)
       - name: Setup Flutter 2.10.5
-        run: |
-          git clone https://github.com/flutter/flutter.git -b stable /tmp/flutter
-          echo "/tmp/flutter/bin" >> $GITHUB_PATH  # Adiciona o Flutter ao PATH
-          flutter doctor  # Verifica a instalação do Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter_version: '2.10.5'
+          channel: 'stable'
 
       # Verificar as versões do Flutter e Dart
       - name: Check Flutter and Dart versions
