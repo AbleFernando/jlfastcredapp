@@ -13,7 +13,7 @@ jobs:
 
       # Clone o repositório do pacote jlfastcred_core
       - name: Clone jlfastcred_core
-        run: git clone https://github.com/AbleFernando/jlfastcred_core.git ./jlfastcred_core
+        run: git clone https://github.com/AbleFernando/jlfastcredcore.git ./jlfastcred_core
 
       # Configuração do Flutter (usando a ação oficial)
       - name: Setup Flutter 2.10.5
