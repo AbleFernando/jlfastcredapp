@@ -10,6 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # Clone o repositório do pacote jlfastcred_core
+      - name: Clone jlfastcred_core
+        run: git clone https://github.com/AbleFernando/jlfastcred_core.git ./jlfastcred_core
+      
+      - run: flutter pub get
+
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
