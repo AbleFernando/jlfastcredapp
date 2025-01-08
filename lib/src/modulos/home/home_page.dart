@@ -79,15 +79,15 @@ class _HomePageState extends State<HomePage> with MesssageViewMixin {
               child: const IconPopupMenuWidget(),
               itemBuilder: (context) {
                 return const [
-                  // PopupMenuItem(
-                  //   value: 2,
-                  //   child: Row(
-                  //     children: [
-                  //       Icon(Icons.account_circle),
-                  //       Text(AppLabels.menuPerfilUsuario)
-                  //     ],
-                  //   ),
-                  // ),
+                  PopupMenuItem(
+                    value: 2,
+                    child: Row(
+                      children: [
+                        Icon(Icons.account_circle),
+                        Text(AppLabels.menuPerfilUsuario)
+                      ],
+                    ),
+                  ),
                   PopupMenuItem(
                     value: 1,
                     child: Row(
@@ -106,10 +106,10 @@ class _HomePageState extends State<HomePage> with MesssageViewMixin {
                 }
                 if (value == 2) {
                   final nav = Navigator.of(context);
-                  // final sp = await SharedPreferences.getInstance();
+                  final sp = await SharedPreferences.getInstance();
 
-                  // controller.showInfo(
-                  //     sp.getString(LocalStorageConstants.userUid).toString());
+                  controller.showInfo(
+                      sp.getString(LocalStorageConstants.userUid).toString());
 
                   nav.pushReplacementNamed(
                     '/user/info',

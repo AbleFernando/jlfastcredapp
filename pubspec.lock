@@ -523,8 +523,8 @@ packages:
   jlfastcred_core:
     dependency: "direct main"
     description:
-      path: "../jlfastcred_core"
-      relative: true
+      path: "/Users/fernandomsouza/src/Projetos/jlfastcred/jlfastcred_core"
+      relative: false
     source: path
     version: "0.0.1"
   js:

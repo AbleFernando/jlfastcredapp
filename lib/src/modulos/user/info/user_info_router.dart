@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
+import 'package:jlfastcred/src/modulos/consultant/info/info_consultant_page.dart';
 import 'package:jlfastcred/src/modulos/user/info/user_info_controller.dart';
-import 'package:jlfastcred/src/modulos/user/info/user_info_page.dart';
 
 class UserInfoRouter extends FlutterGetItModulePageRouter {
   const UserInfoRouter({super.key});

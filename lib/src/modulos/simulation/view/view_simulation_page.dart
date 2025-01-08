@@ -80,15 +80,15 @@ class _ViewSimulationPageState extends State<ViewSimulationPage>
               child: const IconPopupMenuWidget(),
               itemBuilder: (context) {
                 return const [
-                  // PopupMenuItem(
-                  //   value: 2,
-                  //   child: Row(
-                  //     children: [
-                  //       Icon(Icons.account_circle),
-                  //       Text(AppLabels.menuPerfilUsuario),
-                  //     ],
-                  //   ),
-                  // ),
+                  PopupMenuItem(
+                    value: 2,
+                    child: Row(
+                      children: [
+                        Icon(Icons.account_circle),
+                        Text(AppLabels.menuPerfilUsuario),
+                      ],
+                    ),
+                  ),
                   PopupMenuItem(
                     value: 1,
                     child: Row(
@@ -150,11 +150,6 @@ class _ViewSimulationPageState extends State<ViewSimulationPage>
                                 label: 'Data de Nascimento',
                                 initialValue: controller.formatarData(
                                     simulation.birthDate, "dd/MM/yyyy"),
-                              ),
-                              ViewTextFieldForm(
-                                label: 'Margem',
-                                initialValue:
-                                    simulation.margem.toStringAsFixed(2),
                               ),
                               //IMG MARGEM
                               ViewImageFieldForm(

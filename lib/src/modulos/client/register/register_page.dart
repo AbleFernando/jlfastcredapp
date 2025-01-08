@@ -65,15 +65,15 @@ class _MyWidgetState extends State<RegisterPage>
               child: const IconPopupMenuWidget(),
               itemBuilder: (context) {
                 return const [
-                  // PopupMenuItem(
-                  //   value: 2,
-                  //   child: Row(
-                  //     children: [
-                  //       Icon(Icons.account_circle),
-                  //       Text(AppLabels.menuPerfilUsuario),
-                  //     ],
-                  //   ),
-                  // ),
+                  PopupMenuItem(
+                    value: 2,
+                    child: Row(
+                      children: [
+                        Icon(Icons.account_circle),
+                        Text(AppLabels.menuPerfilUsuario),
+                      ],
+                    ),
+                  ),
                   PopupMenuItem(
                     value: 1,
                     child: Row(

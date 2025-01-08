@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_getit: ^2.0.0-dev.12
   jlfastcred_core:
-    path: ../jlfastcred_core
+    path: /Users/fernandomsouza/src/Projetos/jlfastcred/jlfastcred_core
   firebase_core: ^2.17.0
   cloud_firestore: ^4.5.3
   validatorless: ^1.2.3 #validação de formulários

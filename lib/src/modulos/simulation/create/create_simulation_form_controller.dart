@@ -105,7 +105,6 @@ mixin CreateSimulationFormController {
       consultant: Users.empty(),
       client: Client.empty(),
       margemUrl: '',
-      margem: margemEC.text.isNotEmpty ? double.parse(margemEC.text) : 0.00,
     );
   }
 }

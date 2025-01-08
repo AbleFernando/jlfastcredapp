@@ -25,7 +25,6 @@ void main() {
 
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-        //dev
         apiKey: 'AIzaSyAnj4qH-f7_keItuXP8M-c22OzB9jGQL_c',
         appId: '1:575397310493:web:cbf4514fb285f815f556f4',
         messagingSenderId: '575397310493',
@@ -34,14 +33,6 @@ void main() {
         databaseURL: 'https://jlfastcred-d5d8a-default-rtdb.firebaseio.com',
         storageBucket: 'jlfastcred-d5d8a.appspot.com',
         measurementId: 'G-ZY381NE9SB',
-        //prod
-        // apiKey: 'AIzaSyBB2BCF_gjmpeNIoeYNxe6D12ASiEx_Tvc',
-        // appId: '1:756160755491:web:f50aff4eb113829526be96',
-        // messagingSenderId: '756160755491',
-        // projectId: 'jlfastcred-ecf78',
-        // authDomain: 'jlfastcred-ecf78.firebaseapp.com',
-        // storageBucket: 'jlfastcred-ecf78.appspot.com',
-        // measurementId: 'G-QF35JH2ZC8',
       ),
     );
 
