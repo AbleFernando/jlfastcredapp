@@ -15,12 +15,6 @@ jobs:
       - name: Clone jlfastcred_core
         run: git clone https://github.com/AbleFernando/jlfastcred_core.git ./jlfastcred_core
 
-      # Configuração do Flutter
-      # - uses: subosito/flutter-action@v2
-      #   with:
-      #     channel: 'stable'
-      #     architecture: x64
-
       # Configuração do Flutter (usando a ação oficial)
       - name: Setup Flutter 2.10.5
         uses: subosito/flutter-action@v2
@@ -38,17 +32,21 @@ jobs:
       - name: Set folder permissions
         run: chmod -R 777 ios
 
-      # Instalar dependências do Flutter
-      - run: flutter pub get
-
       # Limpar build anterior para evitar conflitos
       - name: Clean previous builds
         run: flutter clean
+
+      # Instalar dependências do Flutter
+      - run: flutter pub get
 
       # Atualizar CocoaPods
       - name: Update CocoaPods repository
         run: pod repo update
         working-directory: ios
+
+      # Configuração de permissões para o diretório Flutter.framework
+      - name: Set permissions for Flutter.framework
+        run: sudo chmod -R 777 /Users/runner/work/jlfastcredapp/jlfastcredapp/build/ios/Release-iphoneos/Flutter.framework
 
       # Build para iOS no modo release
       - name: Build iOS Release
