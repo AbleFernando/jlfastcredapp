@@ -16,10 +16,23 @@ jobs:
         run: git clone https://github.com/AbleFernando/jlfastcred_core.git ./jlfastcred_core
 
       # Configuração do Flutter
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: 'stable'
-          architecture: x64
+      # - uses: subosito/flutter-action@v2
+      #   with:
+      #     channel: 'stable'
+      #     architecture: x64
+
+       # Configuração do Flutter para uma versão específica
+      - name: Setup Flutter 2.10.5
+        run: |
+          git clone https://github.com/flutter/flutter.git -b stable /tmp/flutter
+          echo "/tmp/flutter/bin" >> $GITHUB_PATH
+          flutter doctor
+
+      # Verificar as versões do Flutter e Dart
+      - name: Check Flutter and Dart versions
+        run: |
+          flutter --version
+          dart --version
 
       # Ajuste de permissões no diretório iOS
       - name: Set folder permissions
