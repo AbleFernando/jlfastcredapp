@@ -36,7 +36,7 @@ jobs:
       # Instalar dependências do Flutter no diretório do app
       - name: Install Flutter dependencies in app
         run: |
-          cd ../
+          cd /
           flutter clean
           flutter pub get    
 
