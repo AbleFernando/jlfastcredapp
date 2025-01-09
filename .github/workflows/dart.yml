@@ -33,12 +33,13 @@ jobs:
       # Instalar dependências do Flutter
       - run: flutter pub get
 
+      # Verificar as dependências do Flutter
+      - name: Verify Flutter dependencies
+        run: flutter pub outdated
+
       # Validar e configurar CocoaPods para o plugin jlfastcred
       - name: Validate CocoaPods and configure plugin
         run: |
-          # Garantir que as dependências Flutter sejam instaladas
-          flutter pub get
-      
           cd ios
           if [ ! -f "Podfile" ]; then
             echo "No Podfile found, initializing CocoaPods..."
