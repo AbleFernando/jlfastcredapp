@@ -41,13 +41,13 @@ jobs:
             echo "No Podfile found, initializing CocoaPods..."
             pod init
           fi
-
+      
           # Forçar a inclusão do plugin jlfastcred no Podfile
           if ! grep -q "jlfastcred" Podfile; then
             echo "Adding jlfastcred to Podfile..."
-            echo "\npod 'jlfastcred', :path => '../.symlinks/plugins/jlfastcred/ios'" >> Podfile
+            echo "pod 'jlfastcred', :path => '../.symlinks/plugins/jlfastcred/ios'" >> Podfile
           fi
-
+      
           # Atualizar repositório CocoaPods e instalar dependências
           pod repo update
           pod install
