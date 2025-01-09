@@ -22,12 +22,6 @@ jobs:
           flutter_version: '2.10.5'
           channel: 'stable'
 
-      # Verificar as versões do Flutter e Dart
-      # - name: Check Flutter and Dart versions
-      #   run: |
-      #     flutter --version
-      #     dart --version
-
       # Ajuste de permissões no diretório iOS
       - name: Set folder permissions
         run: chmod -R 777 ios
