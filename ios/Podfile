@@ -34,9 +34,6 @@ target 'Runner' do
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 
-  # Ignore jlfastcred se ele não possui dependências nativas
-  pod 'jlfastcred', :path => '../.symlinks/plugins/jlfastcred/ios', :inhibit_warnings => true
-
   target 'RunnerTests' do
     inherit! :search_paths
   end
