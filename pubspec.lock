@@ -322,7 +322,7 @@ packages:
     source: hosted
     version: "7.0.0"
   file_picker:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: file_picker
       sha256: d1d0ac3966b36dc3e66eeefb40280c17feb87fa2099c6e22e6a1fc959327bd03
@@ -523,8 +523,8 @@ packages:
   jlfastcred_core:
     dependency: "direct main"
     description:
-      path: "/Users/fernandomsouza/src/Projetos/jlfastcred/jlfastcred_core"
-      relative: false
+      path: "../jlfastcredcore"
+      relative: true
     source: path
     version: "0.0.1"
   js:
