@@ -33,10 +33,28 @@ jobs:
       # Instalar dependências do Flutter
       - run: flutter pub get
 
-      # Atualizar CocoaPods
-      - name: Update CocoaPods repository
-        run: pod repo update
-        working-directory: ios
+      # Verificar as dependências do Flutter
+      - name: Verify Flutter dependencies
+        run: flutter pub outdated
+
+      # Validar e configurar CocoaPods para o plugin jlfastcred
+      - name: Validate CocoaPods and configure plugin
+        run: |
+          cd ios
+          if [ ! -f "Podfile" ]; then
+            echo "No Podfile found, initializing CocoaPods..."
+            pod init
+          fi
+      
+          # Forçar a inclusão do plugin jlfastcred no Podfile
+          if ! grep -q "jlfastcred" Podfile; then
+            echo "Adding jlfastcred to Podfile..."
+            echo "pod 'jlfastcred', :path => '../.symlinks/plugins/jlfastcred/ios'" >> Podfile
+          fi
+      
+          # Atualizar repositório CocoaPods e instalar dependências
+          pod repo update
+          pod install
 
       # Verificar se o diretório existe antes de tentar aplicar permissões
       - name: Check if Flutter.framework exists
