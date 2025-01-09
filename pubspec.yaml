@@ -71,23 +71,25 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   plugin:
-      platforms:
-        android:
-          package: com.mr.flutter.plugin.filepicker
-          pluginClass: FilePickerPlugin
-          dartPluginClass: FilePickerIO
-        ios:
-          pluginClass: FilePickerPlugin
-          dartPluginClass: FilePickerIO
-        web:
-          pluginClass: FilePickerWeb
-          fileName: _internal/file_picker_web.dart
-        macos:
-          dartPluginClass: FilePickerMacOS
-        windows:
-          dartPluginClass: FilePickerWindows
-        linux:
-          dartPluginClass: FilePickerLinux
+    platforms:
+      android:
+        package: com.mr.flutter.plugin.filepicker
+        pluginClass: FilePickerPlugin
+        dartPluginClass: FilePickerIO
+      ios:
+        pluginClass: JlfastcredPlugin
+        podspec: ios/jlfastcred.podspec
+        dartPluginClass: FilePickerIO
+      web:
+        pluginClass: FilePickerWeb
+        fileName: _internal/file_picker_web.dart
+      macos:
+        dartPluginClass: FilePickerMacOS
+      windows:
+        dartPluginClass: FilePickerWindows
+      linux:
+        dartPluginClass: FilePickerLinux
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
