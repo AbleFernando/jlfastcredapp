@@ -36,6 +36,9 @@ jobs:
       # Validar e configurar CocoaPods para o plugin jlfastcred
       - name: Validate CocoaPods and configure plugin
         run: |
+          # Garantir que as dependências Flutter sejam instaladas
+          flutter pub get
+      
           cd ios
           if [ ! -f "Podfile" ]; then
             echo "No Podfile found, initializing CocoaPods..."
