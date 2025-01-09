@@ -11,8 +11,8 @@ jobs:
       # Checkout do repositório
       - uses: actions/checkout@v3
 
-      # Clone o repositório do pacote jlfastcred_core
-      - name: Clone jlfastcred_core
+      # Clone o repositório do pacote jlfastcredcore
+      - name: Clone jlfastcredcore
         run: git clone https://github.com/AbleFernando/jlfastcredcore.git ../jlfastcredcore
 
       # Configuração do Flutter (usando a ação oficial)
@@ -30,16 +30,24 @@ jobs:
       - name: Clean previous builds
         run: flutter clean
 
-      # Instalar dependências do Flutter
-      - run: flutter pub get
+      # Instalar dependências do Flutter do core (jlfastcredcore)
+      - name: Install dependencies for jlfastcredcore
+        run: |
+          cd ../jlfastcredcore
+          flutter pub get
 
-      # Verificar as dependências do Flutter
-      - name: Verify Flutter dependencies
-        run: flutter pub outdated
+      # Instalar dependências do Flutter para o aplicativo (jlfastcred)
+      - name: Install dependencies for jlfastcred
+        run: |
+          cd jlfastcred
+          flutter pub get
 
       # Validar e configurar CocoaPods para o plugin jlfastcred
       - name: Validate CocoaPods and configure plugin
         run: |
+          # Garantir que as dependências Flutter do core sejam instaladas
+          flutter pub get
+      
           cd ios
           if [ ! -f "Podfile" ]; then
             echo "No Podfile found, initializing CocoaPods..."
@@ -49,7 +57,7 @@ jobs:
           # Forçar a inclusão do plugin jlfastcred no Podfile
           if ! grep -q "jlfastcred" Podfile; then
             echo "Adding jlfastcred to Podfile..."
-            echo "pod 'jlfastcred', :path => '../.symlinks/plugins/jlfastcred/ios'" >> Podfile
+            echo "pod 'jlfastcred', :path => '../jlfastcred_core/ios/jlfastcred'" >> Podfile
           fi
       
           # Atualizar repositório CocoaPods e instalar dependências
